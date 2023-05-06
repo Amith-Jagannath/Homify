@@ -20,10 +20,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:src="@drawable/baseline_currency_rupee_24"
+
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-        />
+            />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -56,6 +56,14 @@
                 android:textSize="25dp"
                 app:layout_constraintStart_toEndOf="@id/icon"
 
+
+                />
+
+            <ImageView
+                android:id="@+id/deleteBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_delete_24"
 
                 />
 

@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -16,9 +20,15 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity2"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".StuffAdapter"
+            android:exported="false" />
+        <activity
+            android:name=".Contact"
+            android:exported="true" />
+        <activity
+            android:name=".Budget"
             android:exported="false" />
         <activity
             android:name=".AddStuffs"
@@ -37,8 +47,7 @@
             android:exported="false"/>
         <activity android:name=".Asset"
             android:exported="false"/>
-        <activity
-            android:name=".MainActivity"
+        <activity android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -4,8 +4,6 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -37,14 +35,14 @@ public class Dialog extends AppCompatActivity {
             values.put("name", name);
             values.put("expiryDate", date);
             db.insert("assets", null, values);
-            Intent i = new Intent(getApplicationContext(), MainActivity.class);
+            Intent i = new Intent(getApplicationContext(), Budget.class);
             startActivity(i);
         });
 
         // Set a click listener for the Cancel button in the dialog
         Button cancelButton = findViewById(R.id.button3);
         cancelButton.setOnClickListener(view -> {
-            Intent i =new Intent(getApplicationContext(),MainActivity.class);
+            Intent i =new Intent(getApplicationContext(), Budget.class);
             startActivity(i);
         });
     }

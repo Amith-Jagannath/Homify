@@ -1,127 +1,257 @@
 package com.example.project_sub;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatTextView;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
+import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
-import com.example.project_sub.AddExpenseItem;
-import com.example.project_sub.R;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 
-import java.util.ArrayList;
+import org.json.JSONObject;
+
+import cz.msebera.android.httpclient.Header;
 
 public class MainActivity extends AppCompatActivity {
-    SQLiteDatabase db;
-    int curBudget;
-    String budgetVal;
-    private FloatingActionButton button;
-    private ArrayList<Expense> expenseList;
-    private RecyclerView recyclerView;
-    private LinearLayoutManager linearLayoutManager;
-    private ExpenseAdapter expenseAdapter;
-Button change;
-int total =0;
-TextView budget;
+
+
+    final String APP_ID = "dab3af44de7d24ae7ff86549334e45bd";
+    final String WEATHER_URL = "https://api.openweathermap.org/data/2.5/weather";
+
+    final long MIN_TIME = 5000;
+    final float MIN_DISTANCE = 1000;
+    final int REQUEST_CODE = 101;
+
+
+    String Location_Provider = LocationManager.GPS_PROVIDER;
+
+    TextView NameofCity, weatherState, Temperature;
+    ImageView mweatherIcon;
+
+
+    ImageButton contact,track,budget,home;
+
+    LocationManager mLocationManager;
+    LocationListener mLocationListner;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        button = findViewById(R.id.addExpenseBtn);
-        db = new DataBaseHelper(this,"Expense").getWritableDatabase();
-        expenseList = new ArrayList<>();
-        recyclerView = findViewById(R.id.recycler_view);
-        change = findViewById(R.id.change);
-        budget = findViewById(R.id.budget);
-        change.setOnClickListener(new View.OnClickListener() {
+
+        weatherState = findViewById(R.id.weatherCondition);
+        Temperature = findViewById(R.id.temperature);
+        mweatherIcon = findViewById(R.id.ImageIcon);
+        NameofCity = findViewById(R.id.cityname);
+        contact = findViewById(R.id.imageButton3);
+        budget = findViewById(R.id.imageButton2);
+        track = findViewById(R.id.imageButton4);
+        home = findViewById(R.id.imageButton5);
+
+        contact.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),AddMonthlyExp.class);
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), Contact.class);
+                startActivity(i);
+            }
+        });
+
+        budget.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), Budget.class);
+                startActivity(i);
+            }
+        });
+
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), Asset.class);
+                startActivity(i);
+            }
+        });
+
+        track.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), MainActivity2.class);
                 startActivity(i);
             }
         });
 
 
+    }
 
+ /*   @Override
+   protected void onResume() {
+       super.onResume();
+       getWeatherForCurrentLocation();
+    }*/
 
-
-
-        Intent in = getIntent();
-        budget.setText(in.getStringExtra("res"));
-        setupRecyclerView();
-        button.setOnClickListener(view -> {
-            Intent intent = new Intent(getApplicationContext(), AddExpenseItem.class);
-            startActivity(intent);
-        });
-        //****************************** accessing Budget
-        Cursor cursor2 = db.rawQuery("SELECT * FROM Budget", null);
-        for(int i=0;i<cursor2.getCount();i++) {
-            cursor2.moveToNext();
-            budgetVal = cursor2.getString(1);
-            Log.d("month:",cursor2.getString(0));
-            Log.d("budget:",cursor2.getString(1));
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Intent mIntent=getIntent();
+        String city= mIntent.getStringExtra("City");
+        if(city!=null)
+        {
+            getWeatherForNewCity(city);
         }
-        //Log.e("Data:",budgetVal);
-
-
-// *****************************************access expenses
-        Cursor cursor = db.rawQuery("select * from Expense ", null);
-
-       // int deletedRows = db.delete("Expense", "day" + " IS NULL", null);
-        if (cursor.getCount() <= 0) {
-            Toast.makeText(getApplicationContext(), "No records found", Toast.LENGTH_SHORT).show();
-            AppCompatTextView b = findViewById(R.id.expenseBtn);
-
-           b.setText("No Expense found");
-
-        } else {
-            for (int i = 0; i < cursor.getCount(); i++) {
-                cursor.moveToNext();
-                String s = "";
-                String day = cursor.getString(0);
-              String amount = cursor.getString(1);
-               total += Integer.parseInt(amount);
-
-              Log.i("total", String.valueOf(total));
-               expenseList.add(new Expense(day, amount));
-            }
-             if(budgetVal!=null) {
-                 curBudget = Integer.parseInt(budgetVal) - total;
-                 budget.setText(Integer.toString(curBudget));
-             }
-
-
-
-
-
-
-            expenseAdapter = new ExpenseAdapter(expenseList);
-            expenseAdapter.notifyDataSetChanged();
+        else
+        {
+            getWeatherForCurrentLocation();
         }
-
-
-   //*******************access budget for a month
-
 
 
     }
 
 
-    private void setupRecyclerView() {
-        linearLayoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(linearLayoutManager);
-        expenseAdapter = new ExpenseAdapter(expenseList);
-        recyclerView.setAdapter(expenseAdapter);
+    private void getWeatherForNewCity(String city)
+    {
+        RequestParams params=new RequestParams();
+        params.put("q",city);
+        params.put("appid",APP_ID);
+        letsdoSomeNetworking(params);
+
+    }
+
+
+
+
+    private void getWeatherForCurrentLocation() {
+
+        mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        mLocationListner = new LocationListener() {
+            @Override
+            public void onLocationChanged(Location location) {
+
+                String Latitude = String.valueOf(location.getLatitude());
+                String Longitude = String.valueOf(location.getLongitude());
+
+                RequestParams params =new RequestParams();
+                params.put("lat" ,Latitude);
+                params.put("lon",Longitude);
+                params.put("appid",APP_ID);
+                letsdoSomeNetworking(params);
+            }
+
+            @Override
+            public void onStatusChanged(String provider, int status, Bundle extras) {
+
+            }
+
+            @Override
+            public void onProviderEnabled(String provider) {
+
+            }
+
+            @Override
+            public void onProviderDisabled(String provider) {
+                //not able to get location
+            }
+        };
+
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},REQUEST_CODE);
+            return;
+        }
+        mLocationManager.requestLocationUpdates(Location_Provider, MIN_TIME, MIN_DISTANCE, mLocationListner);
+    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+
+        if(requestCode==REQUEST_CODE)
+        {
+            if(grantResults.length>0 && grantResults[0]==PackageManager.PERMISSION_GRANTED)
+            {
+                Toast.makeText(MainActivity.this,"Locationget Succesffully",Toast.LENGTH_SHORT).show();
+                getWeatherForCurrentLocation();
+            }
+            else
+            {
+                //user denied the permission
+            }
+        }
+
+
+    }
+
+
+
+    private  void letsdoSomeNetworking(RequestParams params)
+    {
+        AsyncHttpClient client = new AsyncHttpClient();
+        client.get(WEATHER_URL,params,new JsonHttpResponseHandler()
+        {
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+
+                Toast.makeText(MainActivity.this,"Data Get Success",Toast.LENGTH_SHORT).show();
+
+                weatherData weatherD=weatherData.fromJson(response);
+                updateUI(weatherD);
+
+
+                // super.onSuccess(statusCode, headers, response);
+            }
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                //super.onFailure(statusCode, headers, throwable, errorResponse);
+            }
+        });
+
+
+
+    }
+
+    private  void updateUI(weatherData weather){
+
+
+        Temperature.setText(weather.getmTemperature());
+        NameofCity.setText(weather.getMcity());
+        System.out.println(weather.getMcity());
+        weatherState.setText(weather.getmWeatherType());
+        int resourceID=getResources().getIdentifier(weather.getMicon(),"drawable",getPackageName());
+        mweatherIcon.setImageResource(resourceID);
+
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if(mLocationManager!=null)
+        {
+            mLocationManager.removeUpdates(mLocationListner);
+        }
     }
 }

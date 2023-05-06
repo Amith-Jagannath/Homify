@@ -4,83 +4,130 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#242343"
     tools:context=".MainActivity">
 
-
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/expenseBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="136dp"
-        android:gravity="center"
-        android:padding="4dp"
-        android:text="Your Expenses"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="410dp"
+        android:layout_height="216dp"
+        android:background="#242343"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
-        app:layout_constraintTop_toBottomOf="@id/expenseBtn"
-        app:layout_constraintVertical_bias="1.0" />
+        <TextView
+            android:id="@+id/weatherCondition"
+            android:layout_width="109dp"
+            android:layout_height="31dp"
+            android:text="Weather"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/ImageIcon"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/temperature"
+            app:layout_constraintVertical_bias="0.5" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/addExpenseBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        <TextView
+            android:id="@+id/temperature"
+            android:layout_width="131dp"
+            android:layout_height="53dp"
+            android:text="Temp"
+            android:textColor="#ffffff"
+            android:textSize="34sp"
+            app:layout_constraintBottom_toTopOf="@+id/weatherCondition"
+            app:layout_constraintEnd_toStartOf="@+id/ImageIcon"
+            app:layout_constraintHorizontal_bias="0.666"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cityname"
+            app:layout_constraintVertical_bias="0.5" />
+
+        <TextView
+            android:id="@+id/cityname"
+            android:layout_width="110dp"
+            android:layout_height="32dp"
+            android:text="City"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/temperature"
+            app:layout_constraintEnd_toStartOf="@+id/ImageIcon"
+            app:layout_constraintHorizontal_bias="0.511"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.545" />
+
+        <ImageView
+            android:id="@+id/ImageIcon"
+            android:layout_width="164dp"
+            android:layout_height="145dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/weatherCondition"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.507"
+            tools:srcCompat="@tools:sample/avatars" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="169dp"
+        android:layout_height="151dp"
+        android:background="?selectableItemBackgroundBorderless"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.881"
+        app:layout_constraintHorizontal_bias="0.119"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.948"
-        android:src="@drawable/baseline_add_24"
-        />
+        app:layout_constraintVertical_bias="0.648"
+        app:srcCompat="@drawable/finance" />
 
-    <Button
-        android:id="@+id/change"
-        android:layout_width="107dp"
-        android:layout_height="48dp"
-        android:text="Change"
+    <ImageButton
+        android:id="@+id/imageButton3"
+        android:layout_width="165dp"
+        android:layout_height="153dp"
+        android:background="?selectableItemBackgroundBorderless"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.886"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.128" />
+        app:layout_constraintVertical_bias="0.65"
+        app:srcCompat="@drawable/finance" />
 
-    <TextView
-        android:id="@+id/budget"
-        android:layout_width="237dp"
-        android:layout_height="102dp"
-        android:text="0"
-        android:textSize="38sp"
+    <ImageButton
+        android:id="@+id/imageButton4"
+        android:layout_width="165dp"
+        android:layout_height="153dp"
+        android:background="?selectableItemBackgroundBorderless"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.117"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.054" />
+        app:layout_constraintVertical_bias="0.972"
+        app:srcCompat="@drawable/finance" />
 
-    <TextView
-        android:id="@+id/noExpFound"
-        android:layout_width="194dp"
-        android:layout_height="55dp"
-        android:textSize="38sp"
+    <ImageButton
+        android:id="@+id/imageButton5"
+        android:layout_width="165dp"
+        android:layout_height="153dp"
+        android:background="?selectableItemBackgroundBorderless"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.886"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.972"
+        app:srcCompat="@drawable/finance" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

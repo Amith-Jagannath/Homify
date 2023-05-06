@@ -22,7 +22,7 @@ public class AddStuffs extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_stuffs);
-        db = new DataBaseHelper(this,"Items").getWritableDatabase();
+        db = new DataBaseHelper(this).getWritableDatabase();
         name = findViewById(R.id.itemName);
         btn = findViewById(R.id.addStuffsBtn);
         btn.setOnClickListener(new View.OnClickListener() {

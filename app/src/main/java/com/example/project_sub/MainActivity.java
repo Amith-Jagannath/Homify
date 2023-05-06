@@ -72,6 +72,13 @@ public class MainActivity extends AppCompatActivity {
         });
 
         budget.setOnClickListener(new View.OnClickListener() {
+        button = findViewById(R.id.addExpenseBtn);
+        db = new DataBaseHelper(this).getWritableDatabase();
+        expenseList = new ArrayList<>();
+        recyclerView = findViewById(R.id.recycler_view);
+        change = findViewById(R.id.change);
+        budget = findViewById(R.id.budget);
+        change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(), Budget.class);

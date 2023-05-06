@@ -21,7 +21,7 @@ TextView budget;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_monthly_exp);
-        db = new DataBaseHelper(this,"Budget").getWritableDatabase();
+        db = new DataBaseHelper(this).getWritableDatabase();
         budget = findViewById(R.id.addMonthlyExp);
         btn = findViewById(R.id.addMonthlyBtn);
 

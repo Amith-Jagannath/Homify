@@ -22,7 +22,7 @@ public class AddExpenseItem extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_expense_item);
-        db = new DataBaseHelper(this).getWritableDatabase();
+        db = new DataBaseHelper(this,"Expense").getWritableDatabase();
         btn = findViewById(R.id.addExpenseBtn);
         expense = findViewById(R.id.addExpenseEditText);
         btn.setOnClickListener(new View.OnClickListener() {

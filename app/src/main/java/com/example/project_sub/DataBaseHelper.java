@@ -1,5 +1,6 @@
 package com.example.project_sub;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
@@ -24,4 +25,21 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         // Create tables again
         onCreate(db);
     }
+
+    public boolean isTableExists(SQLiteDatabase db, String tableName) {
+        boolean tableExists = false;
+        Cursor cursor = null;
+        try {
+            cursor = db.rawQuery("SELECT * FROM " + tableName + " LIMIT 0", null);
+            tableExists = true;
+        } catch (Exception e) {
+            return false;
+        } finally {
+            if (cursor != null && !cursor.isClosed()) {
+                cursor.close();
+            }
+        }
+        return tableExists;
+    }
 }
+

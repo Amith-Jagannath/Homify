@@ -33,6 +33,11 @@
             android:name=".AddExpenseItem"
             android:exported="false" />
         <activity
+            android:name=".Dialog"
+            android:exported="false"/>
+        <activity android:name=".Asset"
+            android:exported="false"/>
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

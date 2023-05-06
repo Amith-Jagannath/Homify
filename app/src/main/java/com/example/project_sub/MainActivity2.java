@@ -29,7 +29,7 @@ public class MainActivity2 extends AppCompatActivity implements  ItemClick {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-        db = new DataBaseHelper(this,"Items").getWritableDatabase();
+        db = new DataBaseHelper(this).getWritableDatabase();
         stuffList = new ArrayList<>();
         recyclerView = findViewById(R.id.recycler_view);
         btn = findViewById(R.id.addStuffs);

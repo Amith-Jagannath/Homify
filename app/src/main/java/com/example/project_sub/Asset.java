@@ -6,6 +6,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.view.ViewCompat;
 
 import android.content.ContentValues;
 import android.content.Intent;
@@ -30,6 +31,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Date;
+import java.util.Random;
 
 public class Asset extends AppCompatActivity {
     SQLiteDatabase db;
@@ -42,13 +44,14 @@ public class Asset extends AppCompatActivity {
 
         ActionBar ab = getSupportActionBar();
         ab.setTitle("Homify-Assets");
-        ab.setBackgroundDrawable(new ColorDrawable(Color.CYAN));
+        ab.setBackgroundDrawable(new ColorDrawable(Color.rgb(128, 123, 227)));
+        ab.hide();
         ll=findViewById(R.id.linearLayout);
         btn = findViewById(R.id.button);
-        db = new DataBaseHelper(this,"assets").getWritableDatabase();
-        DataBaseHelper dbtest = new DataBaseHelper(this,"assets");
-        if(dbtest.isTableExists(db,"assets")) {
-            Cursor cursor = db.rawQuery("select * from assets ", null);
+        db = new DataBaseHelper(this).getWritableDatabase();
+        DataBaseHelper dbtest = new DataBaseHelper(this);
+        if(dbtest.isTableExists(db,"Asset")) {
+            Cursor cursor = db.rawQuery("select * from Asset ", null);
             if (cursor.getCount() == -1) {
                 Toast.makeText(getApplicationContext(), "Assets not found!", Toast.LENGTH_SHORT).show();
             } else{
@@ -61,11 +64,12 @@ public class Asset extends AppCompatActivity {
                     textViewNew.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM);
                     textViewNew.setPadding(0, 20, 0, 20);
                     cv.setCardElevation(10f);
-                    cv.setRadius(20f);
                     cv.setUseCompatPadding(false);
                     cv.setCardBackgroundColor(Color.WHITE);
                     cv.setMaxCardElevation(12f);
                     cv.setPreventCornerOverlap(true);
+                    Random ran = new Random();
+                    cv.setBackground(new ColorDrawable(Color.rgb(ran.nextInt(255),ran.nextInt(255),ran.nextInt(255))));
                     LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
                             LinearLayout.LayoutParams.MATCH_PARENT,
                             LinearLayout.LayoutParams.WRAP_CONTENT

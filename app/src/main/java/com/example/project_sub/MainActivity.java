@@ -39,7 +39,7 @@ TextView budget;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         button = findViewById(R.id.addExpenseBtn);
-        db = new DataBaseHelper(this,"Expense").getWritableDatabase();
+        db = new DataBaseHelper(this).getWritableDatabase();
         expenseList = new ArrayList<>();
         recyclerView = findViewById(R.id.recycler_view);
         change = findViewById(R.id.change);
@@ -52,7 +52,15 @@ TextView budget;
             }
         });
 
+        Button btn4 = findViewById(R.id.button4);
 
+        btn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(),Asset.class);
+                startActivity(i);
+            }
+        });
 
 
 

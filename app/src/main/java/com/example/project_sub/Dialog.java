@@ -24,7 +24,7 @@ public class Dialog extends AppCompatActivity {
         // Find the EditText views in the dialog layout
         EditText editText = findViewById(R.id.et);
         DatePicker datePicker = findViewById(R.id.date);
-        db = new DataBaseHelper(this,"assets").getWritableDatabase();
+        db = new DataBaseHelper(this).getWritableDatabase();
 
         // Set a click listener for the OK button in the dialog
         ok = findViewById(R.id.button2);
@@ -36,8 +36,8 @@ public class Dialog extends AppCompatActivity {
             ContentValues values = new ContentValues();
             values.put("name", name);
             values.put("expiryDate", date);
-            db.insert("assets", null, values);
-            Intent i = new Intent(getApplicationContext(), MainActivity.class);
+            db.insert("Asset", null, values);
+            Intent i = new Intent(getApplicationContext(), Asset.class);
             startActivity(i);
         });
 

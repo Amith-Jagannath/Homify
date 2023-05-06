@@ -44,7 +44,7 @@ TextView budget;
 
                 // resetting the content of expense since the budget has changed
                 db.execSQL("DELETE FROM Expense;");
-                Intent i = new Intent(getApplicationContext(),MainActivity.class);
+                Intent i = new Intent(getApplicationContext(), Budget.class);
                 i.putExtra("res",budget.getText().toString());
                 startActivity(i);
             }

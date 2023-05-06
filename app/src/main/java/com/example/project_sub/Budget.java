@@ -37,7 +37,7 @@ TextView budget;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_budget);
         button = findViewById(R.id.addExpenseBtn);
-        db = new DataBaseHelper(this,"Expense").getWritableDatabase();
+        db = new DataBaseHelper(this).getWritableDatabase();
         expenseList = new ArrayList<>();
         recyclerView = findViewById(R.id.recycler_view);
         change = findViewById(R.id.change);

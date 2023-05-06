@@ -4,19 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
+    tools:context=".MainActivity2">
 
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/expenseBtn"
+        android:id="@+id/stuffs_to_buy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="136dp"
+        android:layout_marginTop="28dp"
         android:gravity="center"
         android:padding="4dp"
-        android:text="Your Expenses"
-        android:textSize="18sp"
+        android:text="Stuffs To Buy"
+        android:textSize="25dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -32,11 +31,11 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
 
-        app:layout_constraintTop_toBottomOf="@id/expenseBtn"
+        app:layout_constraintTop_toBottomOf="@id/stuffs_to_buy"
         app:layout_constraintVertical_bias="1.0" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/addExpenseBtn"
+        android:id="@+id/addStuffs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -47,39 +46,5 @@
         app:layout_constraintVertical_bias="0.948"
         android:src="@drawable/baseline_add_24"
         />
-
-    <Button
-        android:id="@+id/change"
-        android:layout_width="107dp"
-        android:layout_height="48dp"
-        android:text="Change"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.128" />
-
-    <TextView
-        android:id="@+id/budget"
-        android:layout_width="237dp"
-        android:layout_height="102dp"
-        android:text="0"
-        android:textSize="38sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.054" />
-
-    <TextView
-        android:id="@+id/noExpFound"
-        android:layout_width="194dp"
-        android:layout_height="55dp"
-        android:textSize="38sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

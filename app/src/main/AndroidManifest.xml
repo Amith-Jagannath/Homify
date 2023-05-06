@@ -12,6 +12,21 @@
         android:theme="@style/Theme.Project_sub"
         tools:targetApi="31">
         <activity
+            android:name=".Stuffs"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity2"
+            android:exported="false" />
+        <activity
+            android:name=".StuffAdapter"
+            android:exported="false" />
+        <activity
+            android:name=".AddStuffs"
+            android:exported="false" />
+        <activity
+            android:name=".AddMonthlyExp"
+            android:exported="false" />
+        <activity
             android:name=".DataBaseHelper"
             android:exported="false" />
         <activity

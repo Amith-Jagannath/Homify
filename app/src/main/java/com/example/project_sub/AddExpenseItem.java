@@ -43,7 +43,7 @@ public class AddExpenseItem extends AppCompatActivity {
                     db.insert("Expense", null, values);
 
                     Intent i = new Intent(getApplicationContext(),MainActivity.class);
-                    i.putExtra("res","Expense Added");
+                    //i.putExtra("res","Expense Added");
                     startActivity(i);
 
                 }

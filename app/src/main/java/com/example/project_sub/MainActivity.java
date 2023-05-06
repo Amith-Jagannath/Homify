@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.example.project_sub.AddExpenseItem;
@@ -79,8 +80,7 @@ TextView budget;
 
        // int deletedRows = db.delete("Expense", "day" + " IS NULL", null);
         if (cursor.getCount() <= 0) {
-            Toast.makeText(getApplicationContext(), "No records found",
-                    Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "No records found", Toast.LENGTH_SHORT).show();
             AppCompatTextView b = findViewById(R.id.expenseBtn);
 
            b.setText("No Expense found");

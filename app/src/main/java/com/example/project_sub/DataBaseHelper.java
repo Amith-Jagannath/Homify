@@ -6,9 +6,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 public class DataBaseHelper extends SQLiteOpenHelper {
     public static String DB_name = "Expenses_DB";
-    public DataBaseHelper(Context context) {
+    public DataBaseHelper(Context context,String DB_name) {
         super(context, DB_name, null, 3);
-
+        this.DB_name = DB_name;
     }
     @Override
     public void onCreate(SQLiteDatabase db) {

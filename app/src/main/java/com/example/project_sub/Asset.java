@@ -68,8 +68,7 @@ public class Asset extends AppCompatActivity {
                     cv.setCardBackgroundColor(Color.WHITE);
                     cv.setMaxCardElevation(12f);
                     cv.setPreventCornerOverlap(true);
-                    Random ran = new Random();
-                    cv.setBackground(new ColorDrawable(Color.rgb(ran.nextInt(255),ran.nextInt(255),ran.nextInt(255))));
+                    cv.setBackground(new ColorDrawable(Color.CYAN));
                     LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
                             LinearLayout.LayoutParams.MATCH_PARENT,
                             LinearLayout.LayoutParams.WRAP_CONTENT

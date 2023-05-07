@@ -43,7 +43,7 @@ public class Dialog extends AppCompatActivity {
         // Set a click listener for the Cancel button in the dialog
         Button cancelButton = findViewById(R.id.button3);
         cancelButton.setOnClickListener(view -> {
-            Intent i =new Intent(getApplicationContext(), Budget.class);
+            Intent i =new Intent(getApplicationContext(), Asset.class);
             startActivity(i);
         });
     }

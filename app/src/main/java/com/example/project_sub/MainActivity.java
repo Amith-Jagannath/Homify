@@ -32,6 +32,8 @@ import com.loopj.android.http.RequestParams;
 
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Random;
 
 import cz.msebera.android.httpclient.Header;
@@ -82,27 +84,32 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Assets not found!", Toast.LENGTH_SHORT).show();
             } else {
                 while (cursor.moveToNext()) {
-                    CardView cv = new CardView(getApplicationContext());
-                    TextView textViewNew = new TextView(this);
-                    textViewNew.setText(cursor.getString(0) + "          " + cursor.getString(1));
-                    textViewNew.setTextSize(20f);
-                    textViewNew.setTypeface(Typeface.DEFAULT_BOLD);
-                    textViewNew.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM);
-                    textViewNew.setPadding(0, 20, 0, 20);
-                    cv.setCardElevation(10f);
-                    cv.setUseCompatPadding(false);
-                    cv.setCardBackgroundColor(Color.WHITE);
-                    cv.setMaxCardElevation(12f);
-                    cv.setPreventCornerOverlap(true);
-                    cv.setBackground(new ColorDrawable(Color.rgb(255,228,125)));
-                    LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
-                            LinearLayout.LayoutParams.MATCH_PARENT,
-                            LinearLayout.LayoutParams.WRAP_CONTENT
-                    );
-                    layoutParams.setMargins(0, 16, 0, 16);
-                    cv.setLayoutParams(layoutParams);
-                    cv.addView(textViewNew);
-                    ll.addView(cv);
+                    Calendar calendar = Calendar.getInstance();
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("d/M/yyyy");
+                    String today = dateFormat.format(calendar.getTime());
+                    if(today.equals(cursor.getString(1))) {
+                        CardView cv = new CardView(getApplicationContext());
+                        TextView textViewNew = new TextView(this);
+                        textViewNew.setText(cursor.getString(0) + "          " + cursor.getString(1));
+                        textViewNew.setTextSize(20f);
+                        textViewNew.setTypeface(Typeface.DEFAULT_BOLD);
+                        textViewNew.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM);
+                        textViewNew.setPadding(0, 20, 0, 20);
+                        cv.setCardElevation(10f);
+                        cv.setUseCompatPadding(false);
+                        cv.setCardBackgroundColor(Color.WHITE);
+                        cv.setMaxCardElevation(12f);
+                        cv.setPreventCornerOverlap(true);
+                        cv.setBackground(new ColorDrawable(Color.rgb(255, 228, 125)));
+                        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                                LinearLayout.LayoutParams.MATCH_PARENT,
+                                LinearLayout.LayoutParams.WRAP_CONTENT
+                        );
+                        layoutParams.setMargins(0, 16, 0, 16);
+                        cv.setLayoutParams(layoutParams);
+                        cv.addView(textViewNew);
+                        ll.addView(cv);
+                    }
                 }
             }
         }

@@ -1,5 +1,6 @@
 package com.example.project_sub;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -27,6 +28,8 @@ public class MainActivity2 extends AppCompatActivity implements  ItemClick {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ActionBar ab = getSupportActionBar();
+        ab.hide();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
         db = new DataBaseHelper(this).getWritableDatabase();
@@ -70,10 +73,9 @@ public class MainActivity2 extends AppCompatActivity implements  ItemClick {
 
     @Override
     public void onclick(Stuffs expense) {
-        //Toast.makeText(this, "yes"+expense.name.toString(), Toast.LENGTH_SHORT).show();
-        //db.execSQL("Delete from Items where id=''"+expense.name);
-        // String[] whereArgs = new String[] {expense.name.toString()};
-        // db.delete("Items", "id" + " = ?", whereArgs);
-        //db.close();
+        db.execSQL("delete from Items where name='" +expense.id+"'");
+        db.close();
+        Intent inten = new Intent(getApplicationContext(),MainActivity2.class);
+        startActivity(inten);
     }
 }

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_image"
     tools:context=".MainActivity2">
 
 
@@ -11,7 +12,7 @@
         android:id="@+id/stuffs_to_buy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="124dp"
         android:gravity="center"
         android:padding="4dp"
         android:text="Stuffs To Buy"

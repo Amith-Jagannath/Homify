@@ -9,6 +9,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Dialog extends AppCompatActivity {
@@ -16,6 +17,8 @@ public class Dialog extends AppCompatActivity {
     Button ok;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
+        ActionBar ab = getSupportActionBar();
+        ab.hide();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dialog_layout);
 
@@ -29,7 +32,7 @@ public class Dialog extends AppCompatActivity {
         ok.setOnClickListener( view -> {
             // Get the user input from the EditText views
             String name = editText.getText().toString();
-            String date = datePicker.getDayOfMonth() + "/" + datePicker.getMonth() + "/" + datePicker.getYear();
+            String date = datePicker.getDayOfMonth() + "/" + (datePicker.getMonth()+1) + "/" + datePicker.getYear();
 
             ContentValues values = new ContentValues();
             values.put("name", name);

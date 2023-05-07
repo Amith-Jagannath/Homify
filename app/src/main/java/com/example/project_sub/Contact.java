@@ -14,6 +14,7 @@ import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -31,6 +32,8 @@ public class Contact extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ActionBar ab = getSupportActionBar();
+        ab.hide();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact);
         db = new ContactsDB(this).getWritableDatabase();

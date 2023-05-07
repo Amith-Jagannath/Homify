@@ -1,5 +1,6 @@
 package com.example.project_sub;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
@@ -20,6 +21,8 @@ public class AddExpenseItem extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ActionBar ab = getSupportActionBar();
+        ab.hide();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_expense_item);
         db = new DataBaseHelper(this).getWritableDatabase();

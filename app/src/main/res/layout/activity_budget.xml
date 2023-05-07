@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_image"
     tools:context=".Budget">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/expenseBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="136dp"
+        android:layout_marginTop="172dp"
         android:gravity="center"
         android:padding="4dp"
         android:text="Your Expenses"
@@ -47,27 +48,27 @@
 
     <Button
         android:id="@+id/change"
-        android:layout_width="107dp"
-        android:layout_height="48dp"
-        android:text="Change"
+        android:layout_width="149dp"
+        android:layout_height="53dp"
+        android:text="Set Budget"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.128" />
+        app:layout_constraintVertical_bias="0.156" />
 
     <TextView
         android:id="@+id/budget"
         android:layout_width="237dp"
         android:layout_height="102dp"
         android:text="0"
+        android:textAlignment="center"
         android:textSize="38sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.054" />
+        app:layout_constraintVertical_bias="0.09" />
 
     <TextView
         android:id="@+id/noExpFound"

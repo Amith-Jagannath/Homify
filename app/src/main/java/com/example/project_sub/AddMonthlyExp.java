@@ -1,5 +1,6 @@
 package com.example.project_sub;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -19,6 +20,8 @@ TextView budget;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ActionBar ab = getSupportActionBar();
+        ab.hide();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_monthly_exp);
         db = new DataBaseHelper(this).getWritableDatabase();

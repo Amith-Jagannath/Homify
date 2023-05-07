@@ -43,8 +43,6 @@ public class Asset extends AppCompatActivity {
         setContentView(R.layout.asset_main);
 
         ActionBar ab = getSupportActionBar();
-        ab.setTitle("Homify-Assets");
-        ab.setBackgroundDrawable(new ColorDrawable(Color.rgb(128, 123, 227)));
         ab.hide();
         ll=findViewById(R.id.linearLayout);
         btn = findViewById(R.id.button);

@@ -22,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
@@ -63,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ActionBar ab = getSupportActionBar();
+        ab.hide();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -100,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
                         cv.setCardBackgroundColor(Color.WHITE);
                         cv.setMaxCardElevation(12f);
                         cv.setPreventCornerOverlap(true);
-                        cv.setBackground(new ColorDrawable(Color.rgb(255, 228, 125)));
+                        cv.setBackground(new ColorDrawable(Color.rgb(255, 255, 255)));
                         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
                                 LinearLayout.LayoutParams.MATCH_PARENT,
                                 LinearLayout.LayoutParams.WRAP_CONTENT

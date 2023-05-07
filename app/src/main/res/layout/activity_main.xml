@@ -27,10 +27,10 @@
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.093"
+            app:layout_constraintHorizontal_bias="0.096"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/temperature"
-            app:layout_constraintVertical_bias="0.5" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.81" />
 
         <TextView
             android:id="@+id/temperature"
@@ -39,9 +39,10 @@
             android:text="Temp"
             android:textColor="#ffffff"
             android:textSize="34sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/weatherCondition"
             app:layout_constraintEnd_toStartOf="@+id/ImageIcon"
-            app:layout_constraintHorizontal_bias="0.463"
+            app:layout_constraintHorizontal_bias="0.466"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cityname"
             app:layout_constraintVertical_bias="0.5" />
@@ -53,12 +54,12 @@
             android:text="City"
             android:textColor="#ffffff"
             android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/temperature"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/ImageIcon"
             app:layout_constraintHorizontal_bias="0.528"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.545" />
+            app:layout_constraintVertical_bias="0.201" />
 
         <ImageView
             android:id="@+id/ImageIcon"
@@ -76,17 +77,17 @@
 
     <ImageButton
         android:id="@+id/imageButton2"
-        android:layout_width="169dp"
-        android:layout_height="151dp"
+        android:layout_width="186dp"
+        android:layout_height="180dp"
         android:background="?selectableItemBackgroundBorderless"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.119"
+        app:layout_constraintHorizontal_bias="0.071"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.639"
-        app:srcCompat="@drawable/budget" />
+        app:layout_constraintVertical_bias="0.647"
+        app:srcCompat="@drawable/budget12" />
 
     <ImageButton
         android:id="@+id/imageButton3"
@@ -110,11 +111,11 @@
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.117"
+        app:layout_constraintHorizontal_bias="0.109"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.972"
-        app:srcCompat="@drawable/track" />
+        app:layout_constraintVertical_bias="0.955"
+        app:srcCompat="@drawable/track12" />
 
     <ImageButton
         android:id="@+id/imageButton5"

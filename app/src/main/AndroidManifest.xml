@@ -18,15 +18,17 @@
         <activity
             android:name=".Stuffs"
             android:exported="false" />
+        <activity android:name=".AddContact"
+            android:exported="false" />
         <activity
             android:name=".MainActivity2"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".StuffAdapter"
             android:exported="false" />
         <activity
             android:name=".Contact"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".Budget"
             android:exported="false" />
@@ -45,8 +47,10 @@
         <activity
             android:name=".Dialog"
             android:exported="false"/>
+
         <activity android:name=".Asset"
             android:exported="false"/>
+
         <activity android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

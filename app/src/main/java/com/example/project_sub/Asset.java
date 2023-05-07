@@ -18,6 +18,7 @@ import android.graphics.ColorFilter;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.PictureDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -25,6 +26,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -56,11 +58,22 @@ public class Asset extends AppCompatActivity {
                 while(cursor.moveToNext()) {
                     CardView cv = new CardView(getApplicationContext());
                     TextView textViewNew = new TextView(this);
-                    textViewNew.setText(cursor.getString(0)+"          " + cursor.getString(1));
+                    String name = cursor.getString(0);
+                    textViewNew.setText(name+"          " + cursor.getString(1));
                     textViewNew.setTextSize(20f);
                     textViewNew.setTypeface(Typeface.DEFAULT_BOLD);
                     textViewNew.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM);
                     textViewNew.setPadding(0, 20, 0, 20);
+                    ImageButton btn = new ImageButton(this);
+                    btn.setBackground(getResources().getDrawable(R.drawable.baseline_delete_24));
+                    btn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            db.execSQL("delete from Asset where name= '"+name+"'");
+                            Intent i = new Intent(getApplicationContext(),Asset.class);
+                            startActivity(i);
+                        }
+                    });
                     cv.setCardElevation(10f);
                     cv.setUseCompatPadding(false);
                     cv.setCardBackgroundColor(Color.WHITE);
@@ -73,7 +86,13 @@ public class Asset extends AppCompatActivity {
                     );
                     layoutParams.setMargins(0, 16, 0,16);
                     cv.setLayoutParams(layoutParams);
-                    cv.addView(textViewNew);
+                    LinearLayout layout = new LinearLayout(this);
+                    layout.setOrientation(LinearLayout.HORIZONTAL);
+                    LinearLayout.LayoutParams layoutParamsnew = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1);
+                    textViewNew.setLayoutParams(layoutParamsnew);
+                    layout.addView(textViewNew);
+                    layout.addView(btn);
+                    cv.addView(layout);
                     ll.addView(cv);
                 }
             }

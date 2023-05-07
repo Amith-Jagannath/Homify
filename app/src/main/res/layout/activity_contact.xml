@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_image"
     tools:context=".Contact">
 
     <SearchView
@@ -18,37 +19,25 @@
 
     <ListView
         android:id="@+id/lv"
-        android:layout_width="357dp"
-        android:layout_height="508dp"
-        app:layout_constraintBottom_toTopOf="@+id/contact"
+        android:layout_width="347dp"
+        android:layout_height="417dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search"
-        app:layout_constraintVertical_bias="0.5" />
+        app:layout_constraintTop_toBottomOf="@+id/search" />
 
-    <Button
-        android:id="@+id/contact"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/addcontactbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="contacts"
+        android:clickable="true"
+        android:contentDescription="Enter How Much Cookies You Want"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.235"
+        app:layout_constraintHorizontal_bias="0.923"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.954" />
-
-    <Button
-        android:id="@+id/add_con"
-        android:layout_width="116dp"
-        android:layout_height="48dp"
-        android:text="Add"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.755"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.954" />
+        app:layout_constraintVertical_bias="0.998"
+        app:srcCompat="@drawable/baseline_add_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

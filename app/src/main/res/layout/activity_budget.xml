@@ -6,8 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".Budget">
 
-
-
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/expenseBtn"
         android:layout_width="match_parent"
@@ -31,7 +29,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-
         app:layout_constraintTop_toBottomOf="@id/expenseBtn"
         app:layout_constraintVertical_bias="1.0" />
 
@@ -81,6 +78,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

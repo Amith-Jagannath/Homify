@@ -16,11 +16,13 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.ArrayList;
 
 public class Contact extends AppCompatActivity {
 
-    Button add,cont;
+    FloatingActionButton add1;
     SearchView sv;
     ListView lv;
     ArrayList<String> contacts;
@@ -33,23 +35,15 @@ public class Contact extends AppCompatActivity {
         setContentView(R.layout.activity_contact);
         db = new ContactsDB(this).getWritableDatabase();
 
-        add = findViewById(R.id.add_con);
-        cont = findViewById(R.id.contact);
         lv = findViewById(R.id.lv);
         sv = findViewById(R.id.search);
+        add1 = findViewById(R.id.addcontactbutton);
 
-        add.setOnClickListener(new View.OnClickListener() {
+
+        add1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(), AddContact.class);
-                startActivity(i);
-            }
-        });
-
-        cont.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(i);
             }
         });

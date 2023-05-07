@@ -14,8 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class AddContact extends AppCompatActivity {
 
     EditText name,phone;
-    Button save,add,contacts;
-
+    Button save;
     SQLiteDatabase db;
 
     @Override
@@ -25,9 +24,6 @@ public class AddContact extends AppCompatActivity {
         phone = findViewById(R.id.phoneNo);
         name = findViewById(R.id.name);
         save = findViewById(R.id.add);
-        add = findViewById(R.id.Add);
-        contacts = findViewById(R.id.Contacts);
-
         db = new ContactsDB(this).getWritableDatabase();
 
         save.setOnClickListener(new View.OnClickListener() {
@@ -38,22 +34,6 @@ public class AddContact extends AppCompatActivity {
                 values.put("phone",phone.getText().toString());
                 db.insert("contact",null,values);
                 Toast.makeText(AddContact.this, "Inserted", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), AddContact.class);
-                startActivity(i);
-            }
-        });
-
-        contacts.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), Contact.class);
-                startActivity(i);
             }
         });
     }

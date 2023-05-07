@@ -26,8 +26,8 @@
             android:textColor="#ffffff"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/ImageIcon"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.093"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/temperature"
             app:layout_constraintVertical_bias="0.5" />
@@ -41,21 +41,21 @@
             android:textSize="34sp"
             app:layout_constraintBottom_toTopOf="@+id/weatherCondition"
             app:layout_constraintEnd_toStartOf="@+id/ImageIcon"
-            app:layout_constraintHorizontal_bias="0.666"
+            app:layout_constraintHorizontal_bias="0.463"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cityname"
             app:layout_constraintVertical_bias="0.5" />
 
         <TextView
             android:id="@+id/cityname"
-            android:layout_width="110dp"
-            android:layout_height="32dp"
+            android:layout_width="138dp"
+            android:layout_height="37dp"
             android:text="City"
             android:textColor="#ffffff"
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@+id/temperature"
             app:layout_constraintEnd_toStartOf="@+id/ImageIcon"
-            app:layout_constraintHorizontal_bias="0.511"
+            app:layout_constraintHorizontal_bias="0.528"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.545" />
@@ -85,8 +85,8 @@
         app:layout_constraintHorizontal_bias="0.119"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.648"
-        app:srcCompat="@drawable/finance" />
+        app:layout_constraintVertical_bias="0.639"
+        app:srcCompat="@drawable/budget" />
 
     <ImageButton
         android:id="@+id/imageButton3"
@@ -96,11 +96,11 @@
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.886"
+        app:layout_constraintHorizontal_bias="0.882"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.65"
-        app:srcCompat="@drawable/finance" />
+        app:layout_constraintVertical_bias="0.641"
+        app:srcCompat="@drawable/contact" />
 
     <ImageButton
         android:id="@+id/imageButton4"
@@ -114,7 +114,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.972"
-        app:srcCompat="@drawable/finance" />
+        app:srcCompat="@drawable/track" />
 
     <ImageButton
         android:id="@+id/imageButton5"
@@ -128,6 +128,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.972"
-        app:srcCompat="@drawable/finance" />
+        app:srcCompat="@drawable/home" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

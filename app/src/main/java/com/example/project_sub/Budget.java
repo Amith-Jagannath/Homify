@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,6 +40,14 @@ TextView budget;
         ab.hide();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_budget);
+        ImageButton home = findViewById(R.id.h);
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(i);
+            }
+        });
         button = findViewById(R.id.addExpenseBtn);
         db = new DataBaseHelper(this).getWritableDatabase();
         expenseList = new ArrayList<>();

@@ -10,7 +10,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
+import android.widget.ImageButton;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -36,6 +36,16 @@ public class MainActivity2 extends AppCompatActivity implements  ItemClick {
         stuffList = new ArrayList<>();
         recyclerView = findViewById(R.id.recycler_view);
         btn = findViewById(R.id.addStuffs);
+
+        ImageButton home = findViewById(R.id.h);
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(i);
+            }
+        });
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

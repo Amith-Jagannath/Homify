@@ -9,7 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Toast;
@@ -37,7 +37,14 @@ public class Contact extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact);
         db = new ContactsDB(this).getWritableDatabase();
-
+        ImageButton home = findViewById(R.id.h);
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(i);
+            }
+        });
         lv = findViewById(R.id.lv);
         sv = findViewById(R.id.search);
         add1 = findViewById(R.id.addcontactbutton);
